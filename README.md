@@ -20,3 +20,4 @@ To navigate to a certain building, click on a feature in the sidebar once they'r
 - [ ] Enable other basemaps options
 - [ ] Zoom limits on map
 - [ ] Provide visual feedback for server time-outs
+- [x] Add responsiveness by making sidebar toggeable
