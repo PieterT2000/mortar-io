@@ -1,6 +1,7 @@
 import { MapFeatures } from "@/types"
 import { Polygon } from "geojson"
 import getCenter from "@turf/centroid"
+import getArea from "@turf/area"
 
 /* ----------------- */
 /* Utility functions to write shorter tests */
@@ -14,6 +15,8 @@ export function geoJsonFromCoords(coords: [number, number][][]): MapFeatures {
         type: "Feature",
         properties: {
           region: `region${i + 1}`,
+          center: [0, 0],
+          area: 0,
         },
         geometry: {
           type: "Polygon",
@@ -26,6 +29,7 @@ export function geoJsonFromCoords(coords: [number, number][][]): MapFeatures {
   }
   geoJSON.features.forEach(feature => {
     feature.properties.center = getCenter(feature).geometry.coordinates as [number, number]
+    feature.properties.area = getArea(feature)
   })
   return geoJSON
 }
