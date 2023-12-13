@@ -8,7 +8,10 @@
 - Jest: for unit tests
 - Tailwind/Shadcn: as UI framework
 
-Please navigate to the website linked [here](https://google.com). To navigate to a certain building, click on a feature in the sidebar once they're all loaded.
+You can access the deployed application [here](https://pietert2000.github.io/mortar-io/).
+To navigate to a certain building, click on a feature in the sidebar once they're all loaded.
+
+> :warning: **Note**: Features might take a while to load due to slow server responses.
 
 #### Future improvements
 
