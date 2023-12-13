@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { Feature, Geometry } from 'geojson'
-import getArea from '@turf/area'
 import { FeatureProperties, MapFeatures } from '@/types';
 
 export function selectFeatureStyle(feature?: Feature<Geometry, FeatureProperties & { color: string }>) {
@@ -50,7 +49,7 @@ export function selectMinAreaFeatureIdx(geoJSON: MapFeatures): number {
   let minArea = Infinity
   let minAreaFeatureIdx = -1
   geoJSON.features.forEach((feature, idx) => {
-    const area = getArea(feature)
+    const { area } = feature.properties
     if (area < minArea) {
       minArea = area
       minAreaFeatureIdx = idx
@@ -64,7 +63,7 @@ export function selectMaxAreaFeatureIdx(geoJSON: MapFeatures): number {
   let maxArea = -Infinity
   let maxAreaFeatureIdx = -1
   geoJSON.features.forEach((feature, idx) => {
-    const area = getArea(feature)
+    const { area } = feature.properties
     if (area > maxArea) {
       maxArea = area
       maxAreaFeatureIdx = idx

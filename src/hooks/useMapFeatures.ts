@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import getCenter from "@turf/centroid";
+import getArea from "@turf/area";
 import { Feature, Polygon } from 'geojson'
 import { FeatureProperties, MapFeatures } from '@/types';
 
@@ -51,6 +52,9 @@ export function convertDataToGeoJSON(data: Data) {
       type: "Feature",
       properties: {
         region,
+        // default values for center and area
+        center: [0, 0],
+        area: 0,
       },
       geometry: {
         type: "Polygon",
@@ -58,6 +62,7 @@ export function convertDataToGeoJSON(data: Data) {
       }
     }
     feature.properties.center = getCenter(feature).geometry.coordinates as [number, number]
+    feature.properties.area = getArea(feature)
 
     geoJSON.features.push(feature)
   }
